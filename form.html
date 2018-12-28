@@ -1,0 +1,39 @@
+<html>
+<head>
+<script src="jquery.js"></script>
+<link rel="stylesheet" href="chatbot.html">
+<script>
+  function onSubmit(token) {
+    alert('thanks ' + document.getElementById('field').value);
+    //window.open("./chatbot.html");
+  };
+ // }
+ //});
+  function validate(event) {
+    event.preventDefault();
+    if (!document.getElementById('field').value) {
+      alert("You must add text to the required field");
+    } else {
+      grecaptcha.execute();
+    }
+  }
+
+  function onload() {
+    var element = document.getElementById('submit');
+    element.onclick = validate;
+  }
+</script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body id='bod'>
+   <form>
+     Name: (required) <input id="field" name="field">
+     <div id='recaptcha' class="g-recaptcha"
+          data-sitekey="6LdLJIEUAAAAAPej-KLTOAGxr3-_IekqMqJh6fW4"
+          data-callback="onSubmit"
+          data-size="invisible"></div>
+     <button id='submit'>submit</button>
+   </form>
+<script>onload();</script>
+</body>
+</html>
